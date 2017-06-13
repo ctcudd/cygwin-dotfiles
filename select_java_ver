@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+java_base_path="/cygdrive/c/bin/java/"
+java_versions=($(ls -d $java_base_path* -d -1 |  sed 's/[^0-9._]*//g'));
+PS3='Please select a version: ';
+select java_version in "${java_versions[@]}";
+do
+    export JAVA_VER="$java_version";
+    break;
+done
+. ~/.bashrc
+

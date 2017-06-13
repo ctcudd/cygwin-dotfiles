@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+if [ -z "$1" ]
+then
+    mvn_version="3.2.3";
+else
+    mvn_version="$1"
+fi
+mvn_path="/cygdrive/c/bin/mvn/apache-maven-$mvn_version"
+if [ -d "$mvn_path" ]
+then
+    echo "Configured MVN_HOME=$mvn_path";
+    export MVN_HOME="$mvn_path";
+else
+    echo "Failed to set MVN_HOME, $mvn_path does not exist";
+fi

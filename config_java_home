@@ -1,0 +1,30 @@
+#!/usr/bin/bash
+
+JDK6="1.6.0_26";
+JDK7="1.7.0_79";
+JDK8="1.8.0_77";
+
+if [ -z "$1" ]
+then
+    jdk_version="$JDK8";
+else
+    if [ "$1" == "6" ] || [ "$1" == "$JDK6" ]
+    then
+	jdk_version="$JDK6";
+    elif [ "$1" == "7" ] || [ "$1" == "$JDK7" ]
+    then
+	jdk_version="$JDK7";
+    elif [ "$1" == "8" ] || [ "$1" == "$JDK8" ]
+    then
+	jdk_version="$JDK8";
+    fi
+fi
+java_path="/cygdrive/c/bin/java/jdk$jdk_version";
+if [ -d "$java_path" ]
+then
+    echo "Configured JAVA_HOME=$java_path";
+    export JAVA_HOME="$java_path";
+else
+    echo "Failed to set JAV_HOME, $java_path does not exist";
+fi
+

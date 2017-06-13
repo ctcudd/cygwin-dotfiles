@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+mvn_base_path="/cygdrive/c/bin/mvn/apache-maven-3";
+mvn_versions=($(ls -d $mvn_base_path* -d -1 | cut -d- -f3));
+PS3='Please select a version: ';
+
+select mvn_version in "${mvn_versions[@]}";
+do
+    export MVN_VER="$mvn_version";
+    break;
+done
+. ~/.bashrc
+
